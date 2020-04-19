@@ -9,17 +9,10 @@ export default {
 	data: () => ({
 
 	}),
-	methods: {
-		goIt() {
-			this.$router.push({
-				name: 'innerAbout'
-			})
-		}
-	}
+	methods: {}
 }
 </script>
 <style lang="stylus" scoped>
-.bv-example-row>div>div
-	border solid 1px grey
-	background: pine
+
+
 </style>
