@@ -13,7 +13,7 @@ export default {
 	created() {
 		//do something after creating vue instance
 		// 获取环境变量
-		console.log(process.env.VUE_APP_TEST)
+		// console.log(process.env.VUE_APP_TEST)
 		// this.$axios.get("/local/test").then(res => {
 		// 	console.log(res)
 		// }).catch(err => {
