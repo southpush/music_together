@@ -9,21 +9,6 @@ Vue.use(VueRouter)
         name: 'Index',
         component: Index
       },
-      {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-        children: [
-            {
-                path: 'innerAbout',
-                name: 'innerAbout',
-                component: () => import(/* webpackChunkName: "about" */ '../components/about/innerAbout.vue'),
-            },
-        ]
-      }
 ]
 
 const router = new VueRouter({
