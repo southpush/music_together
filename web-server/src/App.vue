@@ -11,6 +11,7 @@ export default {
 
 	}),
 	created() {
+		this.$store.commit('CREATE_AUDIO_CONTEXT')
 		//do something after creating vue instance
 		// 获取环境变量
 		// console.log(process.env.VUE_APP_TEST)

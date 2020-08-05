@@ -3,7 +3,9 @@
 	<b-container>
 		<b-row>
 			<b-col>
-				<audioDevicesSelect />
+				<!-- <audioDevicesSelect /> -->
+				<!-- <audio-card /> -->
+				<message />
 			</b-col>
 			<!-- <b-col>
 
@@ -14,7 +16,8 @@
 </template>
 <script>
 import audioDevicesSelect from "../components/controlPanel/audioDevicesSelect"
-
+import audioCard from '../components/audioNode/card.vue'
+import message from '../components/connection/message.vue'
 
 export default {
 	name: "index",
@@ -22,7 +25,9 @@ export default {
 
 	}),
 	components: {
-		audioDevicesSelect
+		// audioDevicesSelect
+		// audioCard
+		message
 	},
 	created() {
 		// navigator.mediaDevices.getUserMedia({
@@ -43,6 +48,9 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-
+#index 
+	background rgba(0,0,0,0.4)
+	min-width 100vw
+	min-height 100vh
 
 </style>

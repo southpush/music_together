@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import uvicorn
 
 
 def main():
@@ -18,4 +19,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    uvicorn.run("websocket_app.asgi:application", host='127.0.0.1', port=8000)

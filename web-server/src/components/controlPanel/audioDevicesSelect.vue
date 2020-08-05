@@ -7,6 +7,7 @@
 
 		<div class="mt-3">Selected: <strong>{{ inputSelect.label }}</strong></div>
 	</div>
+
 	<div class="wrapper">
 		<b-form-group label="输出设备" v-if="outputList">
 			<b-form-radio v-for="device in outputList" :key="device.deviceId" v-model="outputSelect" name="outputDevice" :value="device">{{ device.label }}</b-form-radio>
@@ -23,6 +24,11 @@
 		Your browser does not support the <code>audio</code> element.
 		<source :src="audioSrc" type="audio/webm">
 	</audio>
+
+
+	<div class="wrapper">
+		<audio id="player" controls></audio>
+	</div>
 </div>
 </template>
 <script>
@@ -34,12 +40,52 @@ export default {
 		outputSelect: {},
 		recorder: null,
 		chunks: [],
-		audioSrc: null
+		audioSrc: null,
+
+		audioStream: null,
 	}),
 	created() {
+		// 获取音频设别
 		navigator.mediaDevices.enumerateDevices().then(devicesList => {
 			this.devicesList = devicesList
 		}).catch(err => {})
+
+		// 从麦克风中获取数据
+		navigator.mediaDevices.getUserMedia({
+			audio: true,
+			video: false,
+		}).then((stream) => {
+			let audio = document.getElementById("player")
+			console.log(audio)
+			audio.srcObject = stream
+			audio.onloadedmetadata = (e) => {
+				audio.play()
+				// audio.muted = true
+			}
+
+
+			// let context = new AudioContext()
+			// let source = context.createMediaStreamSource(stream)
+			// // 缓冲区
+			// let processor = context.createScriptProcessor(1024, 1, 1)
+
+			// source.connect(processor)
+			// processor.connect(context.destination)
+
+			// processor.onaudioprocess = (e) => {
+			// 	// console.log(e.inputBuffer)
+			// }
+
+
+			// if (window.URL) {
+			// 	this.audioStream = window.URL.createObjectURL(stream)
+			// } else {
+			// 	this.audioStream = stream
+			// }
+
+		})
+
+
 	},
 	computed: {
 		inputList() {
@@ -54,6 +100,7 @@ export default {
 		}
 	},
 	methods: {
+		// 设置recorder
 		getInputStream(device) {
 			navigator.mediaDevices.getUserMedia({
 				audio: {
@@ -89,4 +136,8 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.wrapper 
+	border solid 1px red
+	padding: 20px;
+	margin: 20px 0
 </style>

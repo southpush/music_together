@@ -50,6 +50,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'websocket_app.urls'
+WS_URLCONF = "websocket_app.ws.urls"
 
 TEMPLATES = [
     {
