@@ -1,5 +1,7 @@
 import json
 
+from websocket_app.ws.urls import route
+
 
 async def websocket_application(scope, receive, send):
     while True:
@@ -14,19 +16,9 @@ async def websocket_application(scope, receive, send):
             break
 
         if event['type'] == 'websocket.receive':
-            # if event['text'] == 'ping':
-            #     await send({
-            #         'type': 'websocket.send',
-            #         'text': 'pong!'
-            #     })
             try:
                 # result = json.loads(event['text'])
-                print("in here")
-                print(scope['root_path'])
-                print(scope['raw_path'])
-                print(scope['query_string'])
-                
-
+                route(scope, receive, send)
             except Exception as e:
                 await send({
                     "type": "websocket.send",
