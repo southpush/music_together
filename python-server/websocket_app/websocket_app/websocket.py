@@ -18,10 +18,10 @@ async def websocket_application(scope, receive, send):
         if event['type'] == 'websocket.receive':
             try:
                 # result = json.loads(event['text'])
-                route(scope, receive, send)
+                await route(scope, event, send)
             except Exception as e:
                 await send({
                     "type": "websocket.send",
-                    "text": e.__repr__
+                    "text": e.__repr__()
                 })
 

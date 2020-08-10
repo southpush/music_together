@@ -60,6 +60,7 @@ export default {
             this.localConnection.createOffer()
                 .then(offer => {
                     this.localConnection.setLocalDescription(offer)
+                    this.$
                 }).then(() => {
                     // send offer request to server
                 })

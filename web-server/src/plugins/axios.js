@@ -10,7 +10,7 @@ import axios from "axios";
 //
 //
 let config = {
-  // baseURL: process.env.baseURL || process.env.apiUrl || "",
+  baseURL: process.env.VUE_APP_BASE_URL + 'local' || "",
   timeout: 60 * 1000, // Timeout 60s
   withCredentials: true, // Check cross-site Access-Control
 };

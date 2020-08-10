@@ -11,6 +11,7 @@ export default {
 
 	}),
 	created() {
+		this.$ws.sendDescription()
 		this.$store.commit('CREATE_AUDIO_CONTEXT')
 		//do something after creating vue instance
 		// 获取环境变量
