@@ -1,14 +1,18 @@
 // import Vuex from 'vuex';
 import { createStore } from 'vuex'
+import webRTC from './modules/webRTC'
 
 export default createStore({
-  state: {
-    id: '123xudos'
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  },
+    state: () => ({
+
+    }),
+    mutations: {
+
+    },
+    actions: {
+
+    },
+    modules: {
+        webRTC
+    },
 });
