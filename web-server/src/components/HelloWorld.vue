@@ -1,5 +1,6 @@
 <template>
     <h1>hello to home</h1>
+    <button @click="sendMsg">send</button>
 </template>
 
 <script lang="ts">
@@ -15,6 +16,7 @@ import {
 } from "vue";
 
 import { useStore } from "vuex";
+import ws from "../ws/index";
 
 export default defineComponent({
     name: "hello world",
@@ -31,8 +33,19 @@ export default defineComponent({
             })
         })
         
-        return {
 
+        const sendMsg = () => {
+            ws.send({
+                type: 'hello',
+                room: '12',
+                text: '123122aklsdgf'
+            })
+        }
+
+
+
+        return {
+            sendMsg
         };
     },
 });
